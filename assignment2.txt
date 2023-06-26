@@ -1,0 +1,159 @@
+Assignment 1:
+import java.util.Arrays;
+
+public class ass1{
+    public static int maxsum(int[] nums) {
+        Arrays.sort(nums);
+        int sum = 0;
+        for (int i = 0; i < nums.length; i += 2) {
+            sum += Math.min(nums[i], nums[i + 1]);
+        }
+        return sum;
+    }
+    public static void main(String[] args) {
+        int[] nums = {1, 4, 3, 2};
+        int sum = maxsum(nums);
+        System.out.println("Maximum sum of minimum values: " + sum);
+    }
+
+    
+}
+
+Assignment 2:
+import java.util.*;
+public class ass2 {
+    public static int maxNumberOfDifferentTypes(int[] candyType) {
+        Set<Integer> uniqueCandyTypes = new HashSet<>();
+        for (int candy : candyType) {
+            uniqueCandyTypes.add(candy);
+        }
+
+        int maxCandies = Math.min(uniqueCandyTypes.size(), candyType.length / 2);
+        return maxCandies;
+    }
+    
+
+    public static void main(String[] args) {
+        int[] candyType = {1, 1, 2, 2, 3, 3};
+        int maxCandies = maxNumberOfDifferentTypes(candyType);
+        System.out.println("Maximum number of different types of candies Alice can eat: " + maxCandies);
+    }
+
+   
+}
+
+    
+Assignment 4:
+import java.util.Scanner;
+
+class ass4 {
+        public static boolean canPlaceFlowers(int[] flowerbed, int n) {
+            int count = 0;
+            for(int i=0;i<flowerbed.length;i++){
+                if (flowerbed[i]==0){
+                    boolean emptyLeftPlot =(i==0)||(flowerbed[i-1]==0);
+                    boolean emptyRightPlot=(i==flowerbed.length-1)||(flowerbed[i+1]==0);
+                    if(emptyLeftPlot && emptyRightPlot){
+                        flowerbed[i]=1;
+                        count++;
+                        if(count>=n){
+                            return true;
+                        }
+                    }
+                }
+            }
+            return count >= n;
+        }
+    
+    public static void main (String [] args){
+        Scanner sc = new  Scanner(System.in);
+        System.out.println("enter the no. of plots");
+        int m = sc.nextInt();
+        int [] flowerbed = new int [m];
+        System.out.println("enter the values for each plot 0 or 1");
+        for (int i=0;i< m;i++){
+            flowerbed[i]=sc.nextInt();
+        }
+        System.out.println("enter the no. of new flower to be planted");
+        int n= sc.nextInt();
+
+        boolean plant=  canPlaceFlowers(flowerbed,n);
+        System.out.println(plant);
+
+
+    }
+    
+}
+
+Assignment 5:
+
+    import java.util.*;
+
+public class ass5 {
+    public static int maxProduct(int []arr){
+        Arrays.sort(arr);
+      return Math.max(arr[0]*arr[1]*arr[arr.length-1],arr[arr.length-1]*arr[arr.length-2]*arr[arr.length-3]);
+        
+
+
+    }
+    public static void main (String []args){
+        int [] arr= {1 ,2,3,4,5};
+        int result= maxProduct(arr);
+        System.out.print(result);
+    }
+    
+}
+
+ Assignment 6:
+ public class ass6 {
+    
+    public static int searchNum(int [] nums, int target){
+        int left = 0;
+        int right = nums.length-1;
+        while(left<=right){
+            int mid = left+(right-left)/2;
+            if(nums[mid]==target){
+                return mid;
+            }
+            else if(nums[mid]<target){
+                left=mid+1;
+            }
+            else{
+                right=mid-1;
+            }
+        }
+        return -1;
+    }
+    public static void main(String[]args){
+        int[] nums={-1,0,3,5,9,12};
+        int target=9;
+        int result= searchNum(nums,target);
+        System.out.println(result);
+    }
+}
+
+Assignment 7:
+public class ass7 {
+    public static boolean monotonic(int[]arr1){
+        boolean increasing = true;
+        boolean decreasing = true;
+        for(int i=0;i<arr1.length-1;i++){
+            if(arr1[i]>arr1[i+1]){
+                increasing = false;
+            }
+            if(arr1[i]<arr1[i+1]){
+                decreasing = false;
+            }
+        }
+        return increasing || decreasing;
+    }
+    public static void main(String[]args){
+        int [] arr1 = {1,2,2,3};
+        boolean monotonic = monotonic(arr1);
+        System.out.print(monotonic);
+    }
+    
+}
+
+
